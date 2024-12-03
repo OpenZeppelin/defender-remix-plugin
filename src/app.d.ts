@@ -13,3 +13,8 @@ declare global {
 declare interface Window {
   ethereum?: import('ethers').Eip1193Provider & import('ethers').BrowserProvider;
 }
+
+// solc does not have a type definition file.
+declare module 'solc' {
+  export function compile(input: string, opts?: any): any;
+}
