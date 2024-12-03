@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+  import { initRemixPlugin } from "$lib/remix";
   import { globalState } from "$lib/remix/state/state.svelte";
   import Setup from "$lib/remix/components/Setup.svelte";
   import Network from "$lib/remix/components/Network.svelte";
@@ -48,6 +50,8 @@
 
 		return false;
 	});
+
+  onMount(initRemixPlugin);
 </script>
 
 <p>

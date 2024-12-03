@@ -20,20 +20,17 @@
 		// assumes that when in dev mode and 
 		// the ancestor origin is localhost, we are in the wizard
 		if (dev && ancestorOrigin.includes("localhost")) {
-			parent = 'wizard';
-			return;
-		}
-
-		if (ancestorOrigin.includes("remix.ethereum")) {
-			parent = 'remix';
-			return initRemixPlugin();
+			return parent = 'wizard';
 		}
 
 		if (ancestorOrigin.includes("wizard.openzeppelin")) {
-			parent = 'wizard';
-			// TODO: init wizard plugin
-			return;
+			return parent = 'wizard';
 		}
+
+		if (ancestorOrigin.includes("remix.ethereum")) {
+			return parent = 'remix';
+		}
+
 	});
 </script>
 
