@@ -7,6 +7,7 @@
   import type { Relayer } from "$lib/models/relayer";
   import { getNetworkLiteral } from "$lib/models/network";
   import Input from "./shared/Input.svelte";
+  import Message from "./shared/Message.svelte";
 
   let address = $state<string>(globalState.form.approvalProcessToCreate?.via || "");
 
@@ -167,11 +168,8 @@
     </div>
   {:else if approvalProcessType === "Relayer"}
     {#if disableRelayers}
-      <div class="alert alert-warning d-flex align-items-center mt-2">
-        <i class="fa fa-exclamation-triangle mr-2"></i>
-        <p class="m-0 lh-1">
-          <small class="lh-sm">API Key not allowed to manage Relayers</small>
-        </p>
+      <div class="mt-2">
+        <Message message="API Key not allowed to manage Relayers" type="warn" />
       </div>
     {:else}
       <Dropdown

@@ -2,6 +2,7 @@
   import type { ChangeEventHandler } from "svelte/elements";
 
   type Props = {
+    name?: string;
     label?: string;
     value: string;
     placeholder: string;
@@ -9,7 +10,7 @@
     disabled?: boolean;
     onchange?: ChangeEventHandler<HTMLInputElement>;
   };
-  let { label, value = $bindable(), placeholder, type, disabled, onchange }: Props = $props();
+  let { label, name, value = $bindable(), placeholder, type, disabled, onchange }: Props = $props();
     
 </script>
 
@@ -17,7 +18,7 @@
   <label class="text-xs" for="apiSecret">{label}</label>
 {/if}
 <input
-  name="apiSecret"
+  name={name}
   type={type}
   bind:value={value}
   placeholder={placeholder}

@@ -71,3 +71,10 @@ export interface UpdateDeploymentRequest {
   address: string;
   hash: string;
 }
+
+export interface DeploymentResult {
+  deploymentId?: string;
+  address: string;
+  hash: string;
+  sender?: string;
+}

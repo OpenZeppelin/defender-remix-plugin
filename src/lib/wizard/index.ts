@@ -14,12 +14,12 @@ export const initWizardPlugin = () => {
 function listenToContracts() {
   window.addEventListener('message', function (e: MessageEvent<DefenderDeployMessage>) {
     if (e.data.kind === 'oz-wizard-defender-deploy') {
-      globalState.contract = { 
+      globalState.contract = {
         source: {
           sources: e.data.sources,
         },
         target: getMainContractName(e.data.sources) 
-      } ;
+      };
     }
   });
 }

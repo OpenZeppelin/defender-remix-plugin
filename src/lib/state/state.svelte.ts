@@ -1,6 +1,6 @@
 import type { ApprovalProcess } from "$lib/models/approval-process";
 import type { GlobalState } from "$lib/models/ui";
-import type { ContractSources } from "$lib/models/solc";
+import { isDeploymentEnvironment, isSameNetwork } from "$lib/utils/helpers";
 
 /**
  * Global application state
@@ -83,4 +83,14 @@ export const addAPToDropdown = (approvalProcess: ApprovalProcess) => {
 
 export function setDeploymentCompleted(completed: boolean) {
   globalState.form.completed = completed;
+}
+
+export function findDeploymentEnvironment(via?: string, network?: string) {
+  if (!via || !network) return undefined;
+  return globalState.approvalProcesses.find((ap) => 
+    ap.network &&
+    isDeploymentEnvironment(ap) &&
+    isSameNetwork(ap.network, network) &&
+    ap.via?.toLocaleLowerCase() === via.toLocaleLowerCase()
+  );
 }
